@@ -11,7 +11,7 @@ const navItems = [
 <header class="header glass">
   <div class="container nav-wrapper">
     <a href="/" class="logo">
-      <span class="logo-text">SAM'S <span class="accent-text">TRANSPORT</span></span>
+      <img src="/logo_samTransport.png" alt="SAM'S TRANSPORT" class="logo-img" />
     </a>
     
     <nav class="desktop-nav">
@@ -52,14 +52,20 @@ const navItems = [
   }
   
   .logo {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
   }
   
-  .accent-text {
-    color: var(--accent);
+  .logo-img {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition);
+  }
+  
+  .logo-img:hover {
+    transform: scale(1.05);
   }
   
   .desktop-nav {

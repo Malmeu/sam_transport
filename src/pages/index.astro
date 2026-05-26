@@ -178,7 +178,9 @@ const services = [
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-info">
-        <h3>SAM'S TRANSPORT</h3>
+        <a href="/" class="footer-logo">
+          <img src="/logo_samTransport.png" alt="SAM'S TRANSPORT" class="footer-logo-img" />
+        </a>
         <p>Votre partenaire logistique de proximité dans le Val-d'Oise. Professionnalisme, rigueur et réactivité.</p>
         <div class="contact-details">
           <p>📍 87 boulevard de l’Oise, 95490 Vauréal</p>
@@ -428,9 +430,20 @@ const services = [
     margin-bottom: 4rem;
   }
   
-  .footer-info h3 {
+  .footer-logo {
+    display: inline-block;
     margin-bottom: 1.5rem;
-    letter-spacing: 1px;
+  }
+  
+  .footer-logo-img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition);
+  }
+  
+  .footer-logo-img:hover {
+    transform: scale(1.05);
   }
   
   .footer-info p {
