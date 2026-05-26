@@ -12,6 +12,7 @@ const navItems = [
   <div class="container nav-wrapper">
     <a href="/" class="logo">
       <img src="/logo_samTransport.png" alt="SAM'S TRANSPORT" class="logo-img" height="60" style="height: 60px !important; width: auto !important; max-height: 60px !important; display: block; object-fit: contain;" />
+      <span class="logo-text">Sam's <span class="logo-text-accent">Transport</span></span>
     </a>
     
     <nav class="desktop-nav">
@@ -23,11 +24,23 @@ const navItems = [
       <a href="/devis" class="btn btn-primary">Demander un devis</a>
     </nav>
     
-    <button class="mobile-menu-btn" aria-label="Menu">
+    <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
+  </div>
+
+  <!-- Menu Mobile -->
+  <div class="mobile-menu">
+    <nav class="mobile-nav-links">
+      <ul>
+        {navItems.map(item => (
+          <li><a href={item.href}>{item.name}</a></li>
+        ))}
+      </ul>
+      <a href="/devis" class="btn btn-primary devis-btn-mobile">Demander un devis</a>
+    </nav>
   </div>
 </header>
 
@@ -42,6 +55,12 @@ const navItems = [
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+  }
+  
+  .header.menu-open {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
   
   .nav-wrapper {
@@ -54,11 +73,12 @@ const navItems = [
   .logo {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
   }
   
   .logo-img {
-    height: 65px;
+    height: 60px;
     width: auto;
     object-fit: contain;
     transition: var(--transition);
@@ -66,6 +86,19 @@ const navItems = [
   
   .logo-img:hover {
     transform: scale(1.05);
+  }
+
+  .logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #111111; /* Noir intense */
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-text-accent {
+    color: var(--accent);
   }
   
   .desktop-nav {
@@ -92,10 +125,15 @@ const navItems = [
   .mobile-menu-btn {
     display: none;
     flex-direction: column;
+    justify-content: center;
     gap: 6px;
     background: none;
     border: none;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    z-index: 1001;
   }
   
   .mobile-menu-btn span {
@@ -103,6 +141,61 @@ const navItems = [
     height: 2px;
     background-color: var(--primary);
     transition: var(--transition);
+    display: block;
+  }
+  
+  /* Menu Mobile Panel */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 2.5rem 1.5rem;
+    transform: translateY(-150%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .header.menu-open .mobile-menu {
+    transform: translateY(0);
+  }
+  
+  .mobile-nav-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .mobile-nav-links a:not(.btn) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: block;
+    padding: 0.5rem 0;
+  }
+  
+  .devis-btn-mobile {
+    display: block;
+    width: 100%;
+  }
+
+  /* Hamburger Anim */
+  .header.menu-open .mobile-menu-btn span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .header.menu-open .mobile-menu-btn span:nth-child(2) {
+    opacity: 0;
+  }
+  .header.menu-open .mobile-menu-btn span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
   
   @media (max-width: 992px) {
@@ -113,5 +206,30 @@ const navItems = [
     .mobile-menu-btn {
       display: flex;
     }
+    
+    .mobile-menu {
+      display: block;
+    }
   }
 </style>
+
+<script>
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const header = document.querySelector('.header');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+
+  if (mobileMenuBtn && header) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+      header.classList.toggle('menu-open');
+    });
+    
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        header.classList.remove('menu-open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
