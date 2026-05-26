@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<Layout title="Nos zones d'intervention - Vauréal, Cergy-Pontoise, Val-d'Oise">
+  <Header />
+  
+  <main>
+    <section class="page-header section-padding">
+      <div class="container animate-fade">
+        <h1>Nos zones d’intervention</h1>
+        <p class="intro-text">SAM’S TRANSPORT est basée à Vauréal, au 87 boulevard de l’Oise. Nous intervenons principalement dans l’agglomération de Cergy‑Pontoise et dans l’ensemble du Val‑d’Oise, et pouvons étudier des demandes sur le reste de l’Île‑de‑France selon la nature de la prestation.</p>
+      </div>
+    </section>
+
+    <section class="zones-detail section-padding">
+      <div class="container grid-2">
+        <div>
+          <SectionHeading title="Vauréal et Cergy‑Pontoise" subtitle="Zone principale" />
+          <p>Notre zone d’intervention principale couvre Vauréal et les communes proches de Cergy‑Pontoise : Cergy, Pontoise, Courdimanche, Jouy‑le‑Moutier, Éragny, Menucourt et les villes voisines. Grâce à cette proximité, nous pouvons proposer des délais rapides et optimiser nos tournées.</p>
+          
+          <div class="cities-list">
+            <a href="/zones-intervention/vaureal" class="city-tag">Vauréal</a>
+            <a href="/zones-intervention/cergy" class="city-tag">Cergy</a>
+            <a href="/zones-intervention/pontoise" class="city-tag">Pontoise</a>
+            <span class="city-tag">Courdimanche</span>
+            <span class="city-tag">Jouy-le-Moutier</span>
+            <span class="city-tag">Éragny</span>
+            <span class="city-tag">Menucourt</span>
+            <span class="city-tag">Osny</span>
+            <span class="city-tag">Saint-Ouen-l'Aumône</span>
+          </div>
+        </div>
+        <div class="map-placeholder glass">
+          <div class="placeholder-content">
+            <span class="icon">📍</span>
+            <p><strong>Siège social</strong><br/>87 boulevard de l’Oise, 95490 Vauréal</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="zones-extra section-padding bg-alt">
+      <div class="container">
+        <div class="centered-content">
+          <SectionHeading title="Val‑d’Oise et communes voisines" subtitle="Rayon d'action étendu" centered={true} />
+          <p>Au‑delà du cœur de Cergy‑Pontoise, nous pouvons intervenir dans de nombreuses communes du Val‑d’Oise et, selon les cas, dans le reste de l’Île‑de‑France. Indiquez simplement votre adresse dans votre demande de devis : nous vous confirmons la faisabilité, les délais et les éventuels frais de déplacement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="zones-faq section-padding">
+      <div class="container centered-content">
+        <SectionHeading title="Vous ne voyez pas votre ville dans la liste ?" subtitle="Une question ?" centered={true} />
+        <p>Même si votre commune n’est pas citée, il est possible que nous puissions intervenir. Le plus simple est de nous envoyer une demande de devis ou de nous appeler en précisant votre adresse et le type de prestation souhaitée. Nous vous répondons rapidement avec une réponse claire.</p>
+        <div class="cta-btns centered">
+          <a href="tel:0123456789" class="btn btn-primary">Nous appeler : 01 23 45 67 89</a>
+          <a href="/devis" class="btn btn-outline">Demander un devis</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page-header {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding-top: 150px;
+    padding-bottom: 80px;
+    text-align: center;
+  }
+  
+  .page-header h1 {
+    color: var(--white);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .intro-text {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+  
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .zones-detail p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  
+  .cities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  
+  .city-tag {
+    padding: 0.5rem 1.2rem;
+    background: var(--bg-alt);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid rgba(0,0,0,0.05);
+    color: var(--primary);
+  }
+  
+  .map-placeholder {
+    height: 450px;
+    background: var(--bg-alt);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .placeholder-content {
+    text-align: center;
+  }
+  
+  .icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .bg-alt {
+    background-color: var(--bg-alt);
+  }
+  
+  .centered-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+  
+  @media (max-width: 992px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .map-placeholder {
+      height: 300px;
+    }
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "SAM'S TRANSPORT - Votre partenaire de confiance pour le transport, le déménagement, le débarras et le nettoyage à Vauréal et dans le Val-d'Oise." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | SAM'S TRANSPORT</title>
+    
+    <!-- SEO Local -->
+    <meta name="geo.region" content="FR-95" />
+    <meta name="geo.placename" content="Vauréal" />
+    <meta name="geo.position" content="49.0333;2.0333" />
+    <meta name="ICBM" content="49.0333, 2.0333" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="SAM'S TRANSPORT" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

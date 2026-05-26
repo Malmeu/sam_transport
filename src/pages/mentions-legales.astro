@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<Layout title="Mentions Légales - SAM'S TRANSPORT">
+  <Header />
+  
+  <main>
+    <section class="page-header section-padding">
+      <div class="container animate-fade">
+        <h1>Mentions Légales</h1>
+      </div>
+    </section>
+
+    <section class="legal-content section-padding">
+      <div class="container">
+        <div class="content-wrapper glass">
+          <h3>1. Présentation du site</h3>
+          <p>Propriétaire : SAM'S TRANSPORT<br/>
+          Adresse : 87 boulevard de l’Oise, 95490 Vauréal<br/>
+          Responsable de la publication : Direction SAM'S TRANSPORT</p>
+
+          <h3>2. Hébergement</h3>
+          <p>Le site est hébergé par [Nom de l'hébergeur]<br/>
+          Adresse de l'hébergeur : [Adresse de l'hébergeur]</p>
+
+          <h3>3. Propriété intellectuelle</h3>
+          <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.</p>
+
+          <h3>4. Données personnelles</h3>
+          <p>Les informations recueillies via les formulaires de contact et de devis sont destinées exclusivement à SAM'S TRANSPORT dans le cadre de la gestion de votre demande. Conformément à la loi "Informatique et Libertés", vous pouvez exercer votre droit d'accès aux données vous concernant et les faire rectifier en nous contactant.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page-header {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding-top: 150px;
+    padding-bottom: 50px;
+    text-align: center;
+  }
+  
+  .page-header h1 {
+    color: var(--white);
+  }
+  
+  .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    border-radius: 20px;
+  }
+  
+  h3 {
+    margin: 2rem 0 1rem;
+    color: var(--primary);
+  }
+  
+  p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+</style>

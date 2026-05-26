@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'transport' }, props: { 
+      title: 'Transport d’objets lourds et encombrants', 
+      description: 'Service de transport professionnel pour vos objets volumineux à Vauréal et dans le Val-d’Oise.',
+      content: 'Certains objets demandent plus qu’un simple coup de main : grands meubles, électroménager, équipements lourds, matériel professionnel… Nous disposons de l’expérience et du matériel nécessaires pour transporter ces éléments en sécurité, depuis ou vers votre logement ou vos locaux. Nous étudions au préalable les accès (escaliers, ascenseur, largeur des portes) afin de prévoir la solution la plus adaptée et éviter tout dommage.'
+    }},
+    { params: { slug: 'demenagement' }, props: { 
+      title: 'Déménagement Professionnel', 
+      description: 'Déménagement local et régional depuis Vauréal. Prise en charge complète ou aide à la manutention.',
+      content: 'Nous organisons votre déménagement local ou régional depuis Vauréal et les communes voisines. Notre équipe prend en charge la protection du mobilier, la manutention, le chargement et le déchargement, avec une attention particulière pour les accès (escaliers, ascenseurs, couloirs étroits). Que vous quittiez un studio, un appartement, une maison ou de petits locaux professionnels, nous adaptons le véhicule, l’équipe et le niveau d’accompagnement.'
+    }},
+    { params: { slug: 'debarras' }, props: { 
+      title: 'Débarras Maison & Appartement', 
+      description: 'Service de débarras complet à Vauréal : évacuation, tri et nettoyage après vente ou succession.',
+      content: 'Nous intervenons pour vider les logements (maison, appartement, cave, grenier) et les locaux professionnels, que ce soit après une vente, une succession, un départ en maison de retraite ou un changement de locataire. Nous trions, évacuons et orientons les objets vers les filières adaptées (recyclage, déchetterie, valorisation lorsque c’est possible), puis nous laissons les lieux rangés et débarrassés.'
+    }},
+    { params: { slug: 'nettoyage' }, props: { 
+      title: 'Nettoyage après intervention', 
+      description: 'Remise au propre de vos locaux après un déménagement ou un débarras à Vauréal.',
+      content: 'Après un déménagement ou un débarras, il reste souvent poussières, traces et petits déchets. Nous proposons un service de nettoyage ciblé pour rendre les pièces propres et présentables avant état des lieux, remise des clés ou visite d’un futur acquéreur. L’intervention peut inclure le nettoyage des sols, des surfaces accessibles et l’évacuation des derniers résidus liés à la prestation.'
+    }},
+  ];
+}
+
+const { title, description, content } = Astro.props;
+---
+
+<Layout title={`${title} | SAM'S TRANSPORT`} description={description}>
+  <Header />
+  
+  <main>
+    <section class="page-header section-padding">
+      <div class="container animate-fade">
+        <SectionHeading title={title} centered={true} light={true} />
+        <p class="intro-text">{description}</p>
+      </div>
+    </section>
+
+    <section class="service-detail section-padding">
+      <div class="container">
+        <div class="content-wrapper glass">
+          <p class="main-content">{content}</p>
+          
+          <div class="service-highlights">
+            <div class="highlight">
+              <span class="icon">📍</span>
+              <p>Intervention à Vauréal et 95</p>
+            </div>
+            <div class="highlight">
+              <span class="icon">⏱️</span>
+              <p>Réponse sous 24h</p>
+            </div>
+            <div class="highlight">
+              <span class="icon">📜</span>
+              <p>Devis gratuit & sans engagement</p>
+            </div>
+          </div>
+          
+          <div class="actions">
+            <a href="/devis" class="btn btn-primary btn-lg">Demander un devis pour ce service</a>
+            <a href="/services" class="btn btn-outline">Voir tous nos services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page-header {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding-top: 150px;
+    padding-bottom: 80px;
+  }
+  
+  .intro-text {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 1rem auto 0;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem;
+    border-radius: 30px;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .main-content {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  
+  .service-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--bg-alt);
+    border-radius: 20px;
+  }
+  
+  .highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .highlight .icon {
+    font-size: 2rem;
+  }
+  
+  .highlight p {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary);
+  }
+  
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,491 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  {
+    title: "Transport",
+    description: "Livraison ponctuelle et transport d'objets encombrants ou fragiles pour particuliers et professionnels.",
+    href: "/services/transport",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>`
+  },
+  {
+    title: "Déménagement",
+    description: "Service complet de déménagement local et national, incluant montage et démontage de mobilier.",
+    href: "/services/demenagement",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3"></path><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>`
+  },
+  {
+    title: "Débarras",
+    description: "Évacuation complète de maisons, appartements, caves et bureaux. Tri responsable et mise en déchetterie.",
+    href: "/services/debarras",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`
+  },
+  {
+    title: "Nettoyage",
+    description: "Nettoyage professionnel après débarras ou déménagement pour un rendu impeccable.",
+    href: "/services/nettoyage",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="m5 8 7-7 7 7"></path><path d="M4 21h16"></path><path d="M21 15H3"></path></svg>`
+  }
+];
+---
+
+<Layout title="Déménagement, transport et débarras à Vauréal et Val‑d’Oise">
+	<Header />
+  
+	<main>
+		<Hero />
+
+    
+    <!-- Services Section -->
+    <section id="services" class="section-padding">
+      <div class="container">
+        <SectionHeading 
+          title="Tous vos besoins de transport et débarras, gérés de A à Z" 
+          subtitle="Nos services principaux" 
+          centered={true}
+        />
+        
+        <p class="section-intro centered">
+          Nous proposons un ensemble de services complémentaires pour répondre à toutes les situations : déménagement, débarras, nettoyage après intervention et transport d’objets lourds ou encombrants. Que ce soit pour un logement, un local professionnel ou un simple meuble à déplacer, nous adaptons notre intervention à votre besoin et à votre budget.
+        </p>
+        
+        <div class="services-grid">
+          {services.map(service => (
+            <ServiceCard {...service} />
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Why Us Section -->
+    <section class="why-us section-padding bg-alt">
+      <div class="container grid-2">
+        <div class="why-us-content">
+          <SectionHeading 
+            title="Pourquoi faire appel à SAM’S TRANSPORT ?" 
+            subtitle="Pourquoi nous choisir ?"
+          />
+          <p class="mb-2">En choisissant une entreprise locale installée à Vauréal, vous bénéficiez d’un partenaire qui connaît parfaitement le secteur, les accès et les contraintes de circulation. Nous attachons une importance particulière au respect des horaires, à la protection des lieux et à la clarté de nos engagements.</p>
+          <ul class="features-list">
+            <li>
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <h4>Expertise Locale</h4>
+                <p>Entreprise basée à Vauréal (Val‑d’Oise), proche de vos besoins.</p>
+              </div>
+            </li>
+            <li>
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <h4>Simplicité</h4>
+                <p>Un appel ou un formulaire, on s’occupe du reste.</p>
+              </div>
+            </li>
+            <li>
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <h4>Service Complet</h4>
+                <p>Déménagement, débarras, nettoyage, transport.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="why-us-image">
+          <div class="image-stack">
+            <div class="image-main glass">
+              <img src="/images/hero-bg.png" alt="Sam's Transport intervention" />
+            </div>
+            <div class="image-accent"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works section-padding">
+      <div class="container">
+        <SectionHeading 
+          title="Un déroulement simple, en trois étapes" 
+          subtitle="Comment ça se passe ?"
+          centered={true}
+        />
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Vous nous contactez</h3>
+            <p>Vous nous expliquez votre situation (type de prestation, adresses, volume approximatif, contraintes particulières).</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Nous préparons l’intervention</h3>
+            <p>Nous définissons avec vous la date, le créneau horaire, les accès et les éventuelles autorisations nécessaires.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Nous réalisons la prestation</h3>
+            <p>Le jour J, notre équipe arrive à l’heure, réalise la prestation puis fait un tour des lieux avec vous.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Local SEO Section -->
+    <section class="locations-section section-padding bg-alt">
+      <div class="container centered-content">
+        <SectionHeading 
+          title="Basés à Vauréal, nous intervenons dans tout le Val‑d’Oise" 
+          subtitle="Zones d’intervention"
+          centered={true}
+        />
+        <p class="section-description">
+          Notre point de départ est Vauréal, au <strong>87 boulevard de l’Oise</strong>. Nous intervenons très régulièrement à Cergy, Pontoise, Courdimanche, Jouy‑le‑Moutier, Éragny, Menucourt et dans l’ensemble de l’agglomération de Cergy‑Pontoise.
+        </p>
+        <div class="locations-tags">
+          <a href="/zones-intervention/vaureal" class="city-tag">Vauréal</a>
+          <a href="/zones-intervention/cergy" class="city-tag">Cergy</a>
+          <a href="/zones-intervention/pontoise" class="city-tag">Pontoise</a>
+          <span>Courdimanche</span>
+          <span>Jouy‑le‑Moutier</span>
+          <span>Éragny</span>
+          <span>Menucourt</span>
+          <span>Val‑d’Oise</span>
+        </div>
+        <p class="mb-2">Un doute sur votre adresse ? Consultez la page “Zones” ou contactez‑nous directement.</p>
+        <a href="/zones-intervention" class="btn btn-outline">Consulter la carte des zones</a>
+      </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section section-padding">
+      <div class="container glass-dark cta-wrapper">
+        <div class="cta-content">
+          <h2>Un projet de déménagement, débarras ou transport ?</h2>
+          <p>Expliquez‑nous votre besoin : nous vous répondons rapidement avec un devis gratuit.</p>
+        </div>
+        <div class="cta-btns">
+          <a href="/devis" class="btn btn-primary">Demander un devis</a>
+          <a href="tel:0123456789" class="btn btn-outline light">Nous appeler</a>
+        </div>
+      </div>
+    </section>
+	</main>
+
+  
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <h3>SAM'S TRANSPORT</h3>
+        <p>Votre partenaire logistique de proximité dans le Val-d'Oise. Professionnalisme, rigueur et réactivité.</p>
+        <div class="contact-details">
+          <p>📍 87 boulevard de l’Oise, 95490 Vauréal</p>
+          <p>📞 01 23 45 67 89</p>
+          <p>✉️ contact@sams-transport.fr</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/transport">Transport</a></li>
+          <li><a href="/services/demenagement">Déménagement</a></li>
+          <li><a href="/services/debarras">Débarras</a></li>
+          <li><a href="/services/nettoyage">Nettoyage</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Liens Utiles</h4>
+        <ul>
+          <li><a href="/a-propos">À Propos</a></li>
+          <li><a href="/zones-intervention">Zones d'intervention</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/mentions-legales">Mentions Légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 SAM'S TRANSPORT. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .section-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .centered {
+    text-align: center;
+  }
+  
+  .mb-2 {
+    margin-bottom: 2rem;
+  }
+  
+  .bg-alt {
+    background-color: var(--bg-alt);
+  }
+  
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .step-card {
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    transition: var(--transition);
+  }
+  
+  .step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-accent);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin: 0 auto 1.5rem;
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  .step-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .features-list {
+    margin-top: 2rem;
+  }
+  
+  .features-list li {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  
+  .feature-text h4 {
+    margin-bottom: 0.25rem;
+    font-size: 1.2rem;
+  }
+  
+  .image-stack {
+    position: relative;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .image-main {
+    position: relative;
+    z-index: 2;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .image-accent {
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    width: 80%;
+    height: 80%;
+    background: var(--gradient-accent);
+    border-radius: 20px;
+    z-index: 1;
+  }
+  
+  .centered-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .section-description {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .locations-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .locations-tags .city-tag {
+    padding: 0.5rem 1.5rem;
+    background: var(--bg-alt);
+    border-radius: 50px;
+    font-weight: 600;
+    color: var(--primary);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: var(--transition);
+    display: inline-block;
+  }
+  
+  .locations-tags a.city-tag:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .cta-section {
+    margin-top: 2rem;
+  }
+  
+  .glass-dark {
+    background: var(--primary);
+    background-image: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    border-radius: 30px;
+    padding: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-premium);
+  }
+  
+  .cta-content h2 {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-content p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+  }
+  
+  .cta-btns {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .btn.light {
+    border-color: var(--white);
+    color: var(--white);
+  }
+  
+  .footer {
+    background: var(--bg-alt);
+    padding: 5rem 0 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+  
+  .footer-info h3 {
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .footer-info p {
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+  }
+  
+  .contact-details p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .footer-links h4 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-links ul li {
+    margin-bottom: 0.8rem;
+  }
+  
+  .footer-links a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+
+  
+  @media (max-width: 992px) {
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .grid-2 {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .glass-dark {
+      flex-direction: column;
+      text-align: center;
+      gap: 2.5rem;
+      padding: 3rem 1.5rem;
+    }
+  }
+
+</style>

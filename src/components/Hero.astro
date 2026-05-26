@@ -1,0 +1,205 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-background">
+    <img src="/images/hero-bg.png" alt="Transport professionnel Sam's Transport" />
+    <div class="overlay"></div>
+  </div>
+  
+  <div class="container hero-content animate-fade">
+    <div class="badge">Basé à Vauréal (95)</div>
+    <h1>Déménagement, transport et débarras à <span class="accent-text">Vauréal</span> et dans tout le <span class="accent-text">Val‑d’Oise</span></h1>
+    <p class="hero-subtitle">SAM’S TRANSPORT, basée au 87 boulevard de l’Oise à Vauréal, vous accompagne pour vos déménagements, débarras, transports d’objets lourds et prestations de nettoyage.</p>
+    <p class="hero-text">Un seul interlocuteur, une équipe sérieuse et réactive, des interventions rapides et organisées : nous simplifions vos projets, du premier contact jusqu’à la remise des clés.</p>
+    
+    <div class="hero-actions">
+      <a href="/devis" class="btn btn-primary btn-lg">Demander un devis gratuit</a>
+      <a href="tel:0123456789" class="btn btn-outline btn-lg">Nous appeler maintenant</a>
+    </div>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-value">100%</span>
+        <span class="stat-label">Réactivité</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value">Proximité</span>
+        <span class="stat-label">Vauréal & Cergy</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value">Gratuit</span>
+        <span class="stat-label">Devis & Conseils</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    overflow: hidden;
+  }
+  
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10, 37, 64, 0.9) 0%, rgba(10, 37, 64, 0.6) 50%, rgba(10, 37, 64, 0.2) 100%);
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    padding-top: 80px;
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 212, 255, 0.2);
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  
+  .accent-text {
+    color: var(--secondary);
+  }
+  
+  p {
+    line-height: 1.6;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+  
+  .hero-text {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+  }
+
+  
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+  
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .btn-outline {
+    border-color: var(--white);
+    color: var(--white);
+  }
+  
+  .btn-outline:hover {
+    background: var(--white);
+    color: var(--primary);
+  }
+  
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .stat-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+  }
+  
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+  
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      text-align: center;
+      height: auto;
+      padding: 120px 0 60px;
+    }
+    
+    .hero-content {
+      margin: 0 auto;
+    }
+    
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .hero-stats {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    
+    .stat-divider {
+      display: none;
+    }
+    
+    .overlay {
+      background: rgba(10, 37, 64, 0.8);
+    }
+  }
+</style>

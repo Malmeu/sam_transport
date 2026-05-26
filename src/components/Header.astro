@@ -1,0 +1,111 @@
+---
+const navItems = [
+  { name: 'Accueil', href: '/' },
+  { name: 'Services', href: '/services' },
+  { name: 'Zones', href: '/zones-intervention' },
+  { name: 'À Propos', href: '/a-propos' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<header class="header glass">
+  <div class="container nav-wrapper">
+    <a href="/" class="logo">
+      <span class="logo-text">SAM'S <span class="accent-text">TRANSPORT</span></span>
+    </a>
+    
+    <nav class="desktop-nav">
+      <ul>
+        {navItems.map(item => (
+          <li><a href={item.href}>{item.name}</a></li>
+        ))}
+      </ul>
+      <a href="/devis" class="btn btn-primary">Demander un devis</a>
+    </nav>
+    
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  
+  .accent-text {
+    color: var(--accent);
+  }
+  
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .desktop-nav ul {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .desktop-nav a:not(.btn) {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+  }
+  
+  .desktop-nav a:not(.btn):hover {
+    color: var(--accent);
+  }
+  
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .mobile-menu-btn span {
+    width: 25px;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+  }
+  
+  @media (max-width: 992px) {
+    .desktop-nav {
+      display: none;
+    }
+    
+    .mobile-menu-btn {
+      display: flex;
+    }
+  }
+</style>
