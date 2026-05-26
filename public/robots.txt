@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sams-transport.fr/sitemap.xml

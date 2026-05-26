@@ -30,6 +30,47 @@ const { title, description = "SAM'S TRANSPORT - Votre partenaire de confiance po
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="SAM'S TRANSPORT" />
+    
+    <!-- Schema.org JSON-LD LocalBusiness -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "SAM'S TRANSPORT",
+        "image": "https://sams-transport.fr/logo_samTransport.png",
+        "logo": "https://sams-transport.fr/logo_samTransport.png",
+        "url": "https://sams-transport.fr",
+        "telephone": "01 23 45 67 89",
+        "email": "contact@sams-transport.fr",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "87 boulevard de l'Oise",
+          "addressLocality": "Vauréal",
+          "postalCode": "95490",
+          "addressRegion": "Val-d'Oise",
+          "addressCountry": "FR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 49.0333,
+          "longitude": 2.0333
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "19:00"
+        },
+        "priceRange": "$$"
+      }
+    </script>
 	</head>
 	<body>
 		<slot />
