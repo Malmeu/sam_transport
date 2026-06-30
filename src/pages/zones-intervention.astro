@@ -4,39 +4,113 @@ import Header from '../components/Header.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 ---
 
-<Layout title="Nos zones d'intervention - Vauréal, Cergy-Pontoise, Val-d'Oise">
+<Layout title="Nos zones d'intervention - Île-de-France et toute la France | SAM'S TRANSPORT">
   <Header />
   
   <main>
     <section class="page-header">
       <div class="container animate-fade">
         <h1>Nos zones d’intervention</h1>
-        <p class="intro-text">SAM’S TRANSPORT est basée à Vauréal, au 87 boulevard de l’Oise. Nous intervenons principalement dans l’agglomération de Cergy‑Pontoise et dans l’ensemble du Val‑d’Oise, et pouvons étudier des demandes sur le reste de l’Île‑de‑France selon la nature de la prestation.</p>
+        <p class="intro-text">SAM’S TRANSPORT est basée à Vauréal, au 87 boulevard de l’Oise. Nous intervenons principalement dans toute la région de l'Île-de-France, mais nous couvrons également l'ensemble du territoire national pour tous vos projets de déménagement et de transport de longue distance.</p>
       </div>
     </section>
 
     <section class="zones-detail section-padding">
       <div class="container grid-2">
         <div>
-          <SectionHeading title="Vauréal et Cergy‑Pontoise" subtitle="Zone principale" />
-          <p>Notre zone d’intervention principale couvre Vauréal et les communes proches de Cergy‑Pontoise : Cergy, Pontoise, Courdimanche, Jouy‑le‑Moutier, Éragny, Menucourt et les villes voisines. Grâce à cette proximité, nous pouvons proposer des délais rapides et optimiser nos tournées.</p>
+          <SectionHeading title="Île-de-France & France entière" subtitle="Couverture complète" />
+          <p>Notre siège étant situé au cœur de l'Île-de-France à Vauréal (95), nous couvrons l'ensemble des départements franciliens pour des interventions rapides et planifiées. Pour vos déménagements de moyenne et longue distance, nous intervenons également dans toutes les régions de France.</p>
           
           <div class="cities-list">
-            <a href="/zones-intervention/vaureal" class="city-tag">Vauréal</a>
+            <span class="city-tag">Île-de-France</span>
+            <a href="/zones-intervention/vaureal" class="city-tag">Val-d'Oise (95)</a>
             <a href="/zones-intervention/cergy" class="city-tag">Cergy</a>
             <a href="/zones-intervention/pontoise" class="city-tag">Pontoise</a>
-            <span class="city-tag">Courdimanche</span>
-            <span class="city-tag">Jouy-le-Moutier</span>
-            <span class="city-tag">Éragny</span>
-            <span class="city-tag">Menucourt</span>
-            <span class="city-tag">Osny</span>
-            <span class="city-tag">Saint-Ouen-l'Aumône</span>
+            <span class="city-tag">Paris (75)</span>
+            <span class="city-tag">Yvelines (78)</span>
+            <span class="city-tag">Hauts-de-Seine (92)</span>
+            <span class="city-tag">Seine-Saint-Denis (93)</span>
+            <span class="city-tag">Val-de-Marne (94)</span>
+            <span class="city-tag">Essonne (91)</span>
+            <span class="city-tag">Seine-et-Marne (77)</span>
+            <span class="city-tag active-tag">France entière</span>
           </div>
         </div>
-        <div class="map-placeholder glass">
-          <div class="placeholder-content">
-            <span class="icon">📍</span>
-            <p><strong>Siège social</strong><br/>87 boulevard de l’Oise, 95490 Vauréal</p>
+
+        <!-- Carte Vectorielle Animée -->
+        <div class="map-container glass">
+          <div class="map-controls">
+            <button class="map-ctrl-btn active" id="btn-anim" data-mode="anim">Autoplay</button>
+            <button class="map-ctrl-btn" id="btn-idf" data-mode="idf">Île-de-France</button>
+            <button class="map-ctrl-btn" id="btn-france" data-mode="france">France entière</button>
+          </div>
+          <div class="map-viewport show-hq">
+            <svg viewBox="0 0 500 500" class="vector-map">
+              <defs>
+                <radialGradient id="idf-grad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#BF6411" stop-opacity="0.8" />
+                  <stop offset="100%" stop-color="#BF6411" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="france-grad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#BF6411" stop-opacity="0.6" />
+                  <stop offset="100%" stop-color="#BF6411" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+
+              <!-- Représentation vectorielle simplifiée des frontières de la France -->
+              <polygon points="250,50 370,120 370,280 250,420 130,280 130,120" class="france-outline-bg" />
+              <path d="M250,50 L370,120 L370,280 L250,420 L130,280 L130,120 Z" class="france-borders" />
+              
+              <!-- Anneaux de couverture animés -->
+              <circle cx="250" cy="200" r="160" class="coverage-ring national-ring" />
+              <circle cx="250" cy="180" r="40" class="coverage-ring idf-ring" />
+              
+              <!-- Lignes de trajets animées de la flotte -->
+              <g class="city-connections">
+                <line x1="250" y1="180" x2="260" y2="80" class="route-line" />
+                <line x1="250" y1="180" x2="330" y2="290" class="route-line" />
+                <line x1="250" y1="180" x2="320" y2="390" class="route-line" />
+                <line x1="250" y1="180" x2="160" y2="320" class="route-line" />
+                <line x1="250" y1="180" x2="130" y2="240" class="route-line" />
+                <line x1="250" y1="180" x2="380" y2="160" class="route-line" />
+              </g>
+              
+              <!-- Villes principales et Siège social -->
+              <g class="city-dots">
+                <!-- Vauréal / Paris (HQ) -->
+                <circle cx="250" cy="180" r="8" class="city-dot hq-dot" />
+                <circle cx="250" cy="180" r="16" class="city-dot hq-pulse" />
+                
+                <!-- Lille -->
+                <circle cx="260" cy="80" r="4" class="city-dot" />
+                <text x="270" y="85" class="map-label">Lille</text>
+                
+                <!-- Lyon -->
+                <circle cx="330" cy="290" r="4" class="city-dot" />
+                <text x="340" y="295" class="map-label">Lyon</text>
+                
+                <!-- Marseille -->
+                <circle cx="320" cy="390" r="4" class="city-dot" />
+                <text x="330" y="395" class="map-label">Marseille</text>
+                
+                <!-- Bordeaux -->
+                <circle cx="160" cy="320" r="4" class="city-dot" />
+                <text x="105" y="325" class="map-label">Bordeaux</text>
+                
+                <!-- Nantes -->
+                <circle cx="130" cy="240" r="4" class="city-dot" />
+                <text x="75" y="245" class="map-label">Nantes</text>
+                
+                <!-- Strasbourg -->
+                <circle cx="380" cy="160" r="4" class="city-dot" />
+                <text x="390" y="165" class="map-label">Strasbourg</text>
+                
+                <text x="265" y="175" class="map-label hq-label">Vauréal (Siège)</text>
+              </g>
+            </svg>
+            <div class="map-status-overlay">
+              <span class="status-badge" id="map-status">Initialisation...</span>
+            </div>
           </div>
         </div>
       </div>
@@ -45,8 +119,8 @@ import SectionHeading from '../components/SectionHeading.astro';
     <section class="zones-extra section-padding bg-alt">
       <div class="container">
         <div class="centered-content">
-          <SectionHeading title="Val‑d’Oise et communes voisines" subtitle="Rayon d'action étendu" centered={true} />
-          <p>Au‑delà du cœur de Cergy‑Pontoise, nous pouvons intervenir dans de nombreuses communes du Val‑d’Oise et, selon les cas, dans le reste de l’Île‑de‑France. Indiquez simplement votre adresse dans votre demande de devis : nous vous confirmons la faisabilité, les délais et les éventuels frais de déplacement.</p>
+          <SectionHeading title="Île-de-France & France entière" subtitle="Rayon d'action élargi" centered={true} />
+          <p>Grâce à notre infrastructure de transport routier robuste, nous organisons régulièrement des déménagements et des livraisons de fret depuis l'Île-de-France (Val-d'Oise, Paris, Yvelines...) vers toutes les autres régions françaises (Auvergne-Rhône-Alpes, PACA, Nouvelle-Aquitaine, Bretagne, etc.) et vice versa.</p>
         </div>
       </div>
     </section>
@@ -54,7 +128,7 @@ import SectionHeading from '../components/SectionHeading.astro';
     <section class="zones-faq section-padding">
       <div class="container centered-content">
         <SectionHeading title="Vous ne voyez pas votre ville dans la liste ?" subtitle="Une question ?" centered={true} />
-        <p>Même si votre commune n’est pas citée, il est possible que nous puissions intervenir. Le plus simple est de nous envoyer une demande de devis ou de nous appeler en précisant votre adresse et le type de prestation souhaitée. Nous vous répondons rapidement avec une réponse claire.</p>
+        <p>Même si votre commune n’est pas citée, nous pouvons intervenir. Que ce soit en Île-de-France ou partout ailleurs en France, le plus simple est de nous envoyer une demande de devis ou de nous appeler en précisant vos adresses de départ et d'arrivée. Nous vous répondrons rapidement.</p>
         <div class="cta-btns centered">
           <a href="tel:0123456789" class="btn btn-primary">Nous appeler : 01 23 45 67 89</a>
           <a href="/devis" class="btn btn-outline">Demander un devis</a>
@@ -116,28 +190,241 @@ import SectionHeading from '../components/SectionHeading.astro';
     font-size: 0.9rem;
     border: 1px solid rgba(0,0,0,0.05);
     color: var(--primary);
+    transition: var(--transition);
+  }
+
+  .city-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .active-tag {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
   }
   
-  .map-placeholder {
-    height: 450px;
-    background: var(--bg-alt);
+  /* Widgets de carte vectorielle animée */
+  .map-container {
+    background: #181818;
     border-radius: 30px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(0,0,0,0.05);
-    position: relative;
+    flex-direction: column;
+    gap: 1rem;
     overflow: hidden;
   }
   
-  .placeholder-content {
-    text-align: center;
+  .map-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem;
+    border-radius: 50px;
+    align-self: center;
+    z-index: 5;
   }
   
-  .icon {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 1rem;
+  .map-ctrl-btn {
+    padding: 0.5rem 1.2rem;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.85rem;
+    font-family: 'Outfit', sans-serif;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .map-ctrl-btn:hover {
+    color: var(--white);
+  }
+  
+  .map-ctrl-btn.active {
+    background: var(--accent);
+    color: var(--white);
+  }
+  
+  .map-viewport {
+    position: relative;
+    background: #111;
+    border-radius: 20px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .vector-map {
+    width: 100%;
+    height: 100%;
+    max-height: 380px;
+  }
+  
+  /* Éléments SVG de la carte */
+  .france-outline-bg {
+    fill: #1f1f1f;
+    stroke: #2a2a2a;
+    stroke-width: 2;
+    transition: var(--transition);
+  }
+  
+  .france-borders {
+    fill: none;
+    stroke: #333333;
+    stroke-width: 1.5;
+    transition: var(--transition);
+  }
+  
+  /* Villes */
+  .city-dot {
+    fill: #555555;
+    stroke: #222;
+    stroke-width: 1;
+    transition: var(--transition);
+  }
+  
+  .hq-dot {
+    fill: var(--accent);
+    stroke: var(--white);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 0 4px var(--accent));
+  }
+  
+  .hq-pulse {
+    fill: var(--accent);
+    opacity: 0.4;
+    animation: hqPulseAnim 2s infinite;
+    transform-origin: 250px 180px;
+  }
+  
+  @keyframes hqPulseAnim {
+    0% {
+      r: 8px;
+      opacity: 0.6;
+    }
+    100% {
+      r: 24px;
+      opacity: 0;
+    }
+  }
+  
+  .map-label {
+    fill: #888888;
+    font-size: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    pointer-events: none;
+    transition: var(--transition);
+  }
+  
+  .hq-label {
+    fill: var(--white);
+    font-weight: 700;
+    font-size: 11px;
+  }
+  
+  /* Anneaux de couverture */
+  .coverage-ring {
+    fill: var(--accent);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    transform-origin: 250px 180px;
+  }
+  
+  .idf-ring {
+    opacity: 0;
+    transform: scale(0.2);
+    fill: url(#idf-grad);
+  }
+  
+  .national-ring {
+    opacity: 0;
+    transform: scale(0.2);
+    transform-origin: 250px 200px;
+    fill: url(#france-grad);
+  }
+  
+  /* Lignes de trajets */
+  .route-line {
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    stroke-dasharray: 6, 4;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    animation: routePulse 1.5s infinite linear;
+  }
+  
+  @keyframes routePulse {
+    to {
+      stroke-dashoffset: -20;
+    }
+  }
+  
+  /* États actifs via les classes */
+  .map-viewport.show-idf .idf-ring {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  
+  .map-viewport.show-idf .city-dot {
+    fill: #666;
+  }
+  
+  .map-viewport.show-france .national-ring {
+    opacity: 0.38;
+    transform: scale(1);
+  }
+  
+  .map-viewport.show-france .idf-ring {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  
+  .map-viewport.show-france .route-line {
+    opacity: 0.7;
+  }
+  
+  .map-viewport.show-france .city-dot {
+    fill: var(--accent);
+    stroke: var(--white);
+  }
+  
+  .map-viewport.show-france .map-label {
+    fill: var(--text-light);
+  }
+  
+  /* Overlay statut */
+  .map-status-overlay {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .status-badge {
+    background: rgba(18, 18, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
   }
   
   .bg-alt {
@@ -163,8 +450,71 @@ import SectionHeading from '../components/SectionHeading.astro';
       gap: 3rem;
     }
     
-    .map-placeholder {
-      height: 300px;
+    .map-container {
+      height: auto;
     }
   }
 </style>
+
+<script>
+  const btnAnim = document.getElementById('btn-anim');
+  const btnIdf = document.getElementById('btn-idf');
+  const btnFrance = document.getElementById('btn-france');
+  const viewport = document.querySelector('.map-viewport');
+  const statusText = document.getElementById('map-status');
+  
+  let currentMode = 'anim'; // anim, idf, france
+  let autoplayInterval;
+  let autoplayStep = 0;
+  
+  function setMode(mode) {
+    currentMode = mode;
+    
+    // Mettre à jour l'état visuel des boutons
+    [btnAnim, btnIdf, btnFrance].forEach(btn => btn.classList.remove('active'));
+    if (mode === 'anim') btnAnim.classList.add('active');
+    else if (mode === 'idf') btnIdf.classList.add('active');
+    else if (mode === 'france') btnFrance.classList.add('active');
+    
+    if (mode !== 'anim') {
+      clearInterval(autoplayInterval);
+      if (viewport) viewport.className = 'map-viewport show-' + mode;
+      if (statusText) statusText.textContent = mode === 'idf' ? 'Couverture Île-de-France' : 'Couverture Nationale (Toute la France)';
+    } else {
+      startAutoplay();
+    }
+  }
+  
+  function startAutoplay() {
+    clearInterval(autoplayInterval);
+    autoplayStep = 0;
+    runAutoplayCycle();
+    autoplayInterval = setInterval(runAutoplayCycle, 3500);
+  }
+  
+  function runAutoplayCycle() {
+    if (!viewport || !statusText) return;
+    
+    if (autoplayStep === 0) {
+      viewport.className = 'map-viewport show-hq';
+      statusText.textContent = 'Siège social : Vauréal (Val-d\'Oise)';
+      autoplayStep = 1;
+    } else if (autoplayStep === 1) {
+      viewport.className = 'map-viewport show-idf';
+      statusText.textContent = 'Étape 1 : Couverture complète de l\'Île-de-France';
+      autoplayStep = 2;
+    } else {
+      viewport.className = 'map-viewport show-france';
+      statusText.textContent = 'Étape 2 : Intervention sur toute la France (National)';
+      autoplayStep = 0;
+    }
+  }
+  
+  // Écouteurs d'événements
+  if (btnAnim) btnAnim.addEventListener('click', () => setMode('anim'));
+  if (btnIdf) btnIdf.addEventListener('click', () => setMode('idf'));
+  if (btnFrance) btnFrance.addEventListener('click', () => setMode('france'));
+  
+  // Démarrage initial
+  setMode('anim');
+</script>

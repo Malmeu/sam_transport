@@ -8,17 +8,17 @@ export function getStaticPaths() {
     { params: { city: 'vaureal' }, props: { 
       cityName: 'Vauréal', 
       zipCode: '95490',
-      description: 'SAM\'S TRANSPORT, votre spécialiste du déménagement et du débarras basé à Vauréal (95490). Intervention rapide et devis gratuit.'
+      description: 'SAM\'S TRANSPORT, votre spécialiste du déménagement et du débarras basé à Vauréal (95490). Intervention locale, en Île-de-France et toute la France.'
     }},
     { params: { city: 'cergy' }, props: { 
       cityName: 'Cergy', 
       zipCode: '95000',
-      description: 'Déménagement et transport d’objets lourds à Cergy. Une équipe réactive pour vos besoins professionnels et particuliers.'
+      description: 'Déménagement et transport d’objets lourds à Cergy. Une équipe réactive pour vos besoins en Île-de-France et toute la France.'
     }},
     { params: { city: 'pontoise' }, props: { 
       cityName: 'Pontoise', 
       zipCode: '95000',
-      description: 'Services de débarras et nettoyage à Pontoise. Intervention soignée et tri responsable de vos encombrants.'
+      description: 'Services de débarras et nettoyage à Pontoise. Intervention soignée en Île-de-France et toute la France.'
     }},
   ];
 }
@@ -40,13 +40,13 @@ const { cityName, zipCode, description } = Astro.props;
     <section class="location-detail section-padding">
       <div class="container">
         <div class="content-wrapper glass">
-          <h3>Votre partenaire de proximité à {cityName}</h3>
-          <p>Basés à Vauréal, nous intervenons quotidiennement à <strong>{cityName}</strong> pour tous vos besoins de transport, déménagement, débarras et nettoyage. Notre connaissance parfaite du secteur nous permet de vous garantir une ponctualité exemplaire et une réactivité optimale.</p>
+          <h3>Votre partenaire logistique à {cityName}</h3>
+          <p>Basés localement à Vauréal, nous intervenons à <strong>{cityName}</strong> et dans toute l'Île-de-France pour tous vos besoins de transport, déménagement, débarras et nettoyage. Nous couvrons également les trajets longues distances vers toute la France.</p>
           
           <div class="local-benefits">
             <h4>Pourquoi nous choisir à {cityName} ?</h4>
             <ul>
-              <li><strong>Proximité immédiate :</strong> Moins de frais de déplacement et plus de réactivité.</li>
+              <li><strong>Flexibilité géographique :</strong> Interventions locales régulières et capacité de transport national longue distance.</li>
               <li><strong>Connaissance du terrain :</strong> Maîtrise des accès et des contraintes locales.</li>
               <li><strong>Sérieux & Professionnalisme :</strong> Une équipe qualifiée pour prendre soin de vos biens.</li>
             </ul>

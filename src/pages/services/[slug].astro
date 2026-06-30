@@ -7,23 +7,23 @@ export function getStaticPaths() {
   return [
     { params: { slug: 'transport' }, props: { 
       title: 'Transport d’objets lourds et encombrants', 
-      description: 'Service de transport professionnel pour vos objets volumineux à Vauréal et dans le Val-d’Oise.',
-      content: 'Certains objets demandent plus qu’un simple coup de main : grands meubles, électroménager, équipements lourds, matériel professionnel… Nous disposons de l’expérience et du matériel nécessaires pour transporter ces éléments en sécurité, depuis ou vers votre logement ou vos locaux. Nous étudions au préalable les accès (escaliers, ascenseur, largeur des portes) afin de prévoir la solution la plus adaptée et éviter tout dommage.'
+      description: 'Service de transport professionnel pour vos objets volumineux en Île-de-France et dans toute la France.',
+      content: 'Certains objets demandent plus qu’un simple coup de main : grands meubles, électroménager, équipements lourds, matériel professionnel… Nous disposons de l’expérience et du matériel nécessaires pour transporter ces éléments en sécurité, depuis ou vers n\'importe quel endroit en Île-de-France ou dans le reste de la France. Nous étudions au préalable les accès (escaliers, ascenseur, largeur des portes) afin de prévoir la solution la plus adaptée et éviter tout dommage.'
     }},
     { params: { slug: 'demenagement' }, props: { 
       title: 'Déménagement Professionnel', 
-      description: 'Déménagement local et régional depuis Vauréal. Prise en charge complète ou aide à la manutention.',
-      content: 'Nous organisons votre déménagement local ou régional depuis Vauréal et les communes voisines. Notre équipe prend en charge la protection du mobilier, la manutention, le chargement et le déchargement, avec une attention particulière pour les accès (escaliers, ascenseurs, couloirs étroits). Que vous quittiez un studio, un appartement, une maison ou de petits locaux professionnels, nous adaptons le véhicule, l’équipe et le niveau d’accompagnement.'
+      description: 'Déménagement national et régional depuis l’Île-de-France. Prise en charge complète ou aide à la manutention.',
+      content: 'Nous organisons votre déménagement national ou régional principalement au départ de l’Île-de-France et vers toutes les communes de l\'Hexagone. Notre équipe prend en charge la protection du mobilier, la manutention, le chargement et le déchargement, avec une attention particulière pour les accès (escaliers, ascenseurs, couloirs étroits). Que vous quittiez un studio, un appartement, une maison ou des locaux professionnels, nous adaptons le véhicule, l’équipe et le niveau d’accompagnement.'
     }},
     { params: { slug: 'debarras' }, props: { 
       title: 'Débarras Maison & Appartement', 
-      description: 'Service de débarras complet à Vauréal : évacuation, tri et nettoyage après vente ou succession.',
-      content: 'Nous intervenons pour vider les logements (maison, appartement, cave, grenier) et les locaux professionnels, que ce soit après une vente, une succession, un départ en maison de retraite ou un changement de locataire. Nous trions, évacuons et orientons les objets vers les filières adaptées (recyclage, déchetterie, valorisation lorsque c’est possible), puis nous laissons les lieux rangés et débarrassés.'
+      description: 'Service de débarras complet en Île-de-France et toute la France : évacuation, tri et nettoyage après vente ou succession.',
+      content: 'Nous intervenons pour vider les logements (maison, appartement, cave, grenier) et les locaux professionnels dans toute la région parisienne et sur demande dans toute la France, que ce soit après une vente, une succession, un départ en maison de retraite ou un changement de locataire. Nous trions, évacuons et orientons les objets vers les filières adaptées (recyclage, déchetterie, valorisation lorsque c’est possible), puis nous laissons les lieux rangés et débarrassés.'
     }},
     { params: { slug: 'nettoyage' }, props: { 
       title: 'Nettoyage après intervention', 
-      description: 'Remise au propre de vos locaux après un déménagement ou un débarras à Vauréal.',
-      content: 'Après un déménagement ou un débarras, il reste souvent poussières, traces et petits déchets. Nous proposons un service de nettoyage ciblé pour rendre les pièces propres et présentables avant état des lieux, remise des clés ou visite d’un futur acquéreur. L’intervention peut inclure le nettoyage des sols, des surfaces accessibles et l’évacuation des derniers résidus liés à la prestation.'
+      description: 'Remise au propre de vos locaux après un déménagement ou un débarras en Île-de-France et toute la France.',
+      content: 'Après un déménagement ou un débarras, il reste souvent poussières, traces et petits déchets. Nous proposons un service de nettoyage ciblé en Île-de-France et toute la France pour rendre les pièces propres et présentables avant état des lieux, remise des clés ou visite d’un futur acquéreur. L’intervention peut inclure le nettoyage des sols, des surfaces accessibles et l’évacuation des derniers résidus liés à la prestation.'
     }},
   ];
 }
@@ -50,7 +50,7 @@ const { title, description, content } = Astro.props;
           <div class="service-highlights">
             <div class="highlight">
               <span class="icon">📍</span>
-              <p>Intervention à Vauréal et 95</p>
+              <p>IDF & France entière</p>
             </div>
             <div class="highlight">
               <span class="icon">⏱️</span>
