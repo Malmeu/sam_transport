@@ -1,0 +1,626 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const categories = [
+  { id: "all", name: "Tous" },
+  { id: "demenagement", name: "Déménagements" },
+  { id: "transport", name: "Transports & Manutention" },
+  { id: "debarras", name: "Débarras & Encombrants" },
+  { id: "flotte", name: "Véhicules & Équipements" }
+];
+
+const images = [
+  { src: "/image_transport_sams/WhatsApp%20Image%202026-05-23%20at%2010.17.58.jpeg", category: "flotte", title: "Notre Camion de Transport principal" },
+  { src: "/image_transport_sams/2.jpeg", category: "demenagement", title: "Chargement du mobilier en cours" },
+  { src: "/image_transport_sams/3.jpeg", category: "transport", title: "Transport d'équipements lourds" },
+  { src: "/image_transport_sams/4.jpeg", category: "demenagement", title: "Préparation d'un déménagement résidentiel" },
+  { src: "/image_transport_sams/5.jpeg", category: "debarras", title: "Tri et évacuation d'encombrants" },
+  { src: "/image_transport_sams/6.jpeg", category: "transport", title: "Livraison d'objets volumineux" },
+  { src: "/image_transport_sams/7.jpeg", category: "demenagement", title: "Manutention soignée et sécurisée" },
+  { src: "/image_transport_sams/8.jpeg", category: "debarras", title: "Débarras complet de cave" },
+  { src: "/image_transport_sams/9.jpeg", category: "transport", title: "Serrage et sécurisation du chargement" },
+  { src: "/image_transport_sams/10.jpeg", category: "demenagement", title: "Emballage et cartons de déménagement" },
+  { src: "/image_transport_sams/11.jpeg", category: "flotte", title: "Notre flotte de véhicules en action" },
+  { src: "/image_transport_sams/12.jpeg", category: "transport", title: "Transport sécurisé sur route" },
+  { src: "/image_transport_sams/13.jpeg", category: "debarras", title: "Débarras de garage encombré" },
+  { src: "/image_transport_sams/14.jpeg", category: "demenagement", title: "Déménagement de bureaux professionnels" },
+  { src: "/image_transport_sams/15.jpeg", category: "transport", title: "Manutention et levage d'objets lourds" },
+  { src: "/image_transport_sams/16.jpeg", category: "flotte", title: "Équipements et sangles professionnels" },
+  { src: "/image_transport_sams/17.jpeg", category: "demenagement", title: "Protection du mobilier sous housse" },
+  { src: "/image_transport_sams/18.jpeg", category: "debarras", title: "Débarras de maison de A à Z" },
+  { src: "/image_transport_sams/19.jpeg", category: "transport", title: "Manutention sur mesure" },
+  { src: "/image_transport_sams/20.jpeg", category: "demenagement", title: "Notre équipe de déménageurs professionnels" },
+  { src: "/image_transport_sams/21.jpeg", category: "debarras", title: "Évacuation propre et tri responsable" },
+  { src: "/image_transport_sams/22.jpeg", category: "transport", title: "Transport d'objets lourds sur palette" }
+];
+---
+
+<Layout title="Galerie Photos - Nos interventions réelles | SAM'S TRANSPORT">
+  <Header />
+
+  <main>
+    <!-- En-tête de la page -->
+    <section class="page-header">
+      <div class="container animate-fade">
+        <SectionHeading title="Galerie Photos" subtitle="Nos Réalisations" centered={true} light={true} />
+        <p class="intro-text">Découvrez en images nos interventions de déménagement, transport d'objets lourds, débarras de logements et de locaux commerciaux dans le Val-d'Oise.</p>
+      </div>
+    </section>
+
+    <!-- Section Filtres & Galerie -->
+    <section class="gallery-section section-padding">
+      <div class="container">
+        
+        <!-- Barre de Filtres -->
+        <div class="filter-wrapper animate-fade">
+          <div class="filter-buttons">
+            {categories.map((cat, idx) => (
+              <button 
+                class={`filter-btn ${idx === 0 ? 'active' : ''}`} 
+                data-filter={cat.id}
+              >
+                {cat.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Grille de Photos -->
+        <div class="gallery-grid animate-fade">
+          {images.map((img, index) => (
+            <div 
+              class="gallery-item show" 
+              data-category={img.category} 
+              data-index={index}
+            >
+              <div class="gallery-card glass">
+                <div class="img-wrapper">
+                  <img src={img.src} alt={img.title} loading="lazy" />
+                  <div class="card-overlay">
+                    <span class="category-badge">{categories.find(c => c.id === img.category)?.name}</span>
+                    <h3 class="card-title">{img.title}</h3>
+                    <span class="zoom-icon">🔍 Agrandir</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Modal Lightbox (Dialog HTML5) -->
+    <dialog id="lightbox" class="lightbox-modal">
+      <div class="lightbox-container">
+        <button class="lightbox-close" id="close-btn" aria-label="Fermer la galerie">&times;</button>
+        
+        <div class="lightbox-content">
+          <button class="lightbox-nav prev" id="prev-btn" aria-label="Image précédente">&#10094;</button>
+          
+          <div class="lightbox-image-wrapper">
+            <img id="lightbox-img" src="" alt="" />
+          </div>
+          
+          <button class="lightbox-nav next" id="next-btn" aria-label="Image suivante">&#10095;</button>
+        </div>
+        
+        <div class="lightbox-caption">
+          <div class="caption-info">
+            <span class="caption-category" id="lightbox-cat">Catégorie</span>
+            <p class="caption-text" id="lightbox-title">Titre de l'image</p>
+          </div>
+          <div class="caption-counter" id="lightbox-counter">1 / 22</div>
+        </div>
+      </div>
+    </dialog>
+  </main>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), url("/image_transport_sams/WhatsApp%20Image%202026-05-23%20at%2010.17.58.jpeg") no-repeat center center;
+    background-size: cover;
+    color: var(--white);
+    padding-top: 160px;
+    padding-bottom: 80px;
+    text-align: center;
+  }
+
+  .intro-text {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .gallery-section {
+    background: var(--bg-alt);
+    min-height: 600px;
+  }
+
+  /* Filtres */
+  .filter-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    background: var(--white);
+    padding: 0.6rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .filter-btn {
+    padding: 0.7rem 1.6rem;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: var(--transition);
+  }
+
+  .filter-btn:hover {
+    color: var(--accent);
+    background: var(--bg-alt);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(191, 100, 17, 0.3);
+  }
+
+  /* Grille de Photos */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .gallery-item {
+    display: none;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .gallery-item.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .gallery-card {
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+  }
+
+  .gallery-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-premium);
+    border-color: var(--accent);
+  }
+
+  .img-wrapper {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gallery-card:hover .img-wrapper img {
+    transform: scale(1.1);
+  }
+
+  /* Overlay survol */
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.9) 0%, rgba(18, 18, 18, 0.4) 60%, transparent 100%);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.8rem;
+    transition: opacity 0.4s ease;
+  }
+
+  .gallery-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .category-badge {
+    align-self: flex-start;
+    padding: 0.3rem 0.8rem;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50px;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .card-title {
+    color: var(--white);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .zoom-icon {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  /* Lightbox Modal (HTML5 Dialog) */
+  .lightbox-modal {
+    border: none;
+    padding: 0;
+    background: transparent;
+    max-width: 100vw;
+    max-height: 100vh;
+    outline: none;
+  }
+
+  .lightbox-modal::backdrop {
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .lightbox-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 3rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+    transition: var(--transition);
+  }
+
+  .lightbox-close:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+  }
+
+  .lightbox-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-grow: 1;
+    max-height: calc(100vh - 120px);
+    gap: 1.5rem;
+  }
+
+  .lightbox-nav {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+  }
+
+  .lightbox-nav:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.05);
+  }
+
+  .lightbox-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
+    max-width: calc(100% - 160px);
+  }
+
+  .lightbox-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .lightbox-caption {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem 2rem;
+    border-radius: 15px;
+    color: var(--white);
+    backdrop-filter: blur(5px);
+    margin-top: 1rem;
+  }
+
+  .caption-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .caption-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .caption-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .caption-counter {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    .filter-buttons {
+      border-radius: 20px;
+      padding: 0.4rem;
+    }
+    
+    .filter-btn {
+      padding: 0.5rem 1.1rem;
+      font-size: 0.85rem;
+    }
+    
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .lightbox-container {
+      padding: 1rem;
+    }
+
+    .lightbox-close {
+      top: 1rem;
+      right: 1rem;
+      font-size: 2.5rem;
+    }
+
+    .lightbox-nav {
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
+    }
+
+    .lightbox-image-wrapper {
+      max-width: 100%;
+    }
+
+    .lightbox-caption {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.8rem;
+      padding: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Tableau complet des images avec leur encodage pour le JS
+  const images = [
+    { src: "/image_transport_sams/WhatsApp%20Image%202026-05-23%20at%2010.17.58.jpeg", catName: "Véhicules & Équipements", title: "Notre Camion de Transport principal" },
+    { src: "/image_transport_sams/2.jpeg", catName: "Déménagements", title: "Chargement du mobilier en cours" },
+    { src: "/image_transport_sams/3.jpeg", catName: "Transports & Manutention", title: "Transport d'équipements lourds" },
+    { src: "/image_transport_sams/4.jpeg", catName: "Déménagements", title: "Préparation d'un déménagement résidentiel" },
+    { src: "/image_transport_sams/5.jpeg", catName: "Débarras & Encombrants", title: "Tri et évacuation d'encombrants" },
+    { src: "/image_transport_sams/6.jpeg", catName: "Transports & Manutention", title: "Livraison d'objets volumineux" },
+    { src: "/image_transport_sams/7.jpeg", catName: "Déménagements", title: "Manutention soignée et sécurisée" },
+    { src: "/image_transport_sams/8.jpeg", catName: "Débarras & Encombrants", title: "Débarras complet de cave" },
+    { src: "/image_transport_sams/9.jpeg", catName: "Transports & Manutention", title: "Serrage et sécurisation du chargement" },
+    { src: "/image_transport_sams/10.jpeg", catName: "Déménagements", title: "Emballage et cartons de déménagement" },
+    { src: "/image_transport_sams/11.jpeg", catName: "Véhicules & Équipements", title: "Notre flotte de véhicules en action" },
+    { src: "/image_transport_sams/12.jpeg", catName: "Transports & Manutention", title: "Transport sécurisé sur route" },
+    { src: "/image_transport_sams/13.jpeg", catName: "Débarras & Encombrants", title: "Débarras de garage encombré" },
+    { src: "/image_transport_sams/14.jpeg", catName: "Déménagements", title: "Déménagement de bureaux professionnels" },
+    { src: "/image_transport_sams/15.jpeg", catName: "Transports & Manutention", title: "Manutention et levage d'objets lourds" },
+    { src: "/image_transport_sams/16.jpeg", catName: "Véhicules & Équipements", title: "Équipements et sangles professionnels" },
+    { src: "/image_transport_sams/17.jpeg", catName: "Déménagements", title: "Protection du mobilier sous housse" },
+    { src: "/image_transport_sams/18.jpeg", catName: "Débarras & Encombrants", title: "Débarras de maison de A à Z" },
+    { src: "/image_transport_sams/19.jpeg", catName: "Transports & Manutention", title: "Manutention sur mesure" },
+    { src: "/image_transport_sams/20.jpeg", catName: "Déménagements", title: "Notre équipe de déménageurs professionnels" },
+    { src: "/image_transport_sams/21.jpeg", catName: "Débarras & Encombrants", title: "Évacuation propre et tri responsable" },
+    { src: "/image_transport_sams/22.jpeg", catName: "Transports & Manutention", title: "Transport d'objets lourds sur palette" }
+  ];
+
+  let currentImages = [...images]; // Contient les images actuellement filtrées
+  let currentIndex = 0;
+
+  // Éléments du DOM
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox') as HTMLDialogElement;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxCat = document.getElementById('lightbox-cat');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  
+  const closeBtn = document.getElementById('close-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  // --- FILTRES DE LA GALERIE ---
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Activer l'état visuel du bouton
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      // Filtrer les éléments de la grille
+      galleryItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (filterValue === 'all' || itemCategory === filterValue) {
+          item.classList.add('show');
+        } else {
+          item.classList.remove('show');
+        }
+      });
+
+      // Mettre à jour les images pour la lightbox
+      if (filterValue === 'all') {
+        currentImages = [...images];
+      } else {
+        currentImages = images.filter(img => {
+          const itemCategory = images.indexOf(img);
+          // On retrouve l'élément du DOM associé par index
+          const domItem = document.querySelector(`.gallery-item[data-index="${itemCategory}"]`);
+          return domItem?.getAttribute('data-category') === filterValue;
+        });
+      }
+    });
+  });
+
+  // --- LIGHTBOX MODAL ---
+  
+  // Fonction pour mettre à jour l'image et les infos dans la lightbox
+  function updateLightbox() {
+    if (currentImages[currentIndex]) {
+      const imgInfo = currentImages[currentIndex];
+      lightboxImg.src = imgInfo.src;
+      lightboxImg.alt = imgInfo.title;
+      if (lightboxCat) lightboxCat.textContent = imgInfo.catName;
+      if (lightboxTitle) lightboxTitle.textContent = imgInfo.title;
+      if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+  }
+
+  // Ouvrir la lightbox au clic sur une image
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const domIndex = parseInt(item.getAttribute('data-index') || '0', 10);
+      const imgInfo = images[domIndex];
+      
+      // Trouver l'index dans la liste des images filtrées actuellement
+      currentIndex = currentImages.findIndex(img => img.src === imgInfo.src);
+      if (currentIndex === -1) currentIndex = 0;
+
+      updateLightbox();
+      if (lightbox) {
+        lightbox.showModal();
+        document.body.style.overflow = 'hidden'; // Bloquer le défilement du site
+      }
+    });
+  });
+
+  // Fermer la lightbox
+  function closeLightbox() {
+    if (lightbox) {
+      lightbox.close();
+      document.body.style.overflow = ''; // Rétablir le défilement
+    }
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeLightbox);
+  }
+
+  // Light dismiss : Fermer en cliquant en dehors de l'image (sur le backdrop)
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  }
+
+  // Navigation Précédente
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateLightbox();
+  }
+
+  // Navigation Suivante
+  function showNext() {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateLightbox();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', showPrev);
+  if (nextBtn) nextBtn.addEventListener('click', showNext);
+
+  // Raccourcis clavier (Navigation Flèches + Fermeture Échap)
+  window.addEventListener('keydown', (e) => {
+    if (lightbox && lightbox.open) {
+      if (e.key === 'ArrowLeft') {
+        showPrev();
+      } else if (e.key === 'ArrowRight') {
+        showNext();
+      } else if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    }
+  });
+</script>
